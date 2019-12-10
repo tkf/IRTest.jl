@@ -21,7 +21,7 @@ function run_ir_test_script(script::AbstractString, include, dir::AbstractString
         if Base.JLOptions().color == 1
             cmd = `$cmd --color=yes`
         end
-        @info "Running IR test in a subprocess..." cmd script
+        @info "Running IR test in a subprocess..." cmd script code=Text(code)
         @test success(pipeline(`$cmd -e $code`; stdout=stdout, stderr=stderr))
         @info "Running IR test in a subprocess...DONE"
     else
